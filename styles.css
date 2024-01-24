@@ -1,139 +1,159 @@
 body {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  flex-direction: column;
-  justify-content: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
 }
-title {
-  justify-content: center;
-}
-h1 {
-  margin-bottom: 20px; /* Добавляем отступ снизу для красоты */
-}
-.todo-list {
-  width: auto;
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
-  box-shadow: 0 10px 40px rgb(214, 194, 194);
-  border: radius 5px;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-body.light-mode {
-  background: #fff;
-  color: #333;
+#posts-container {
+  margin-top: 20px;
 }
 
-body.dark-mode {
-  background: #333;
-  color: #fff;
+.post {
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-section {
-  flex: 1;
-  text-align: center;
-}
-
-.task {
-  width: 400px;
-}
-
-.strikeout {
-  text-decoration: line-through;
-}
-
-.edit-btn {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.creator {
-  font-size: 12px;
-  color: #aaa;
-}
-
-.error {
-  color: red;
-  margin-top: 5px;
-}
-#toggleThemeBtn {
-  align-items: flex-end;
-  justify-content: center;
-}
-.glow-on-hover {
-  width: 220px;
-  height: 50px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #ffffff;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-}
-
-.glow-on-hover:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #91db36,
-    #66b53e,
-    #8a882d,
-    #89df66,
-    #5faea1,
-    #5165c6,
-    hsl(47, 29%, 61%),
-    #eaa4dd,
-    #e29090
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-.glow-on-hover:active {
-  color: #000000;
-}
-
-.glow-on-hover:active:after {
-  background: transparent;
-}
-
-.glow-on-hover:hover:before {
-  opacity: 1;
-}
-
-.glow-on-hover:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #3d3939;
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-@keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  max-width: 600px;
 }
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+#post-form {
+  display: grid;
+  gap: 10px;
+}
+
+#post-form label {
+  font-weight: bold;
+}
+
+#post-form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#create-post-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#theme-toggle-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#create-post-btn:hover {
+  opacity: 0.9;
+}
+
+#theme-toggle-btn:hover {
+  opacity: 0.9;
+}
+
+.post button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.post button:hover {
+  opacity: 0.9;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+}
+
+.star-btn {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.star-btn.important {
+  color: gold;
+}
+
+.star-btn.not-important {
+  color: grey;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

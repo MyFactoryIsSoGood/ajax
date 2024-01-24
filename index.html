@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Заметки</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
-    ></script>
-  </head>
-  <body class="light-mode">
-    <section>
-      <h1>todo-list</h1>
-      <div class="todo-list">
-        <form id="taskForm">
-          <label for="title">Задание:</label>
-          <input type="text" id="title" required />
-          <label for="userId">ID:</label>
-          <input type="number" id="userId" min="1" max="10" required />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Постики</title>
+</head>
+<body>
 
-          <button type="submit">Добавить/Редактировать</button>
-          <div class="error" id="userIdError"></div>
-        </form>
-      </div>
+<div class="container">
+  <h1>Постики</h1>
+  <button id="create-post-btn">Создать пост</button>
+  <button id="theme-toggle-btn">Переключить тему</button>
+  <div id="loader" class="loader"></div>
+  <div id="posts-container"></div>
+</div>
 
-      <div id="tasks"></div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="post-form">
+      <label for="title">Название:</label>
+      <input type="text" id="title" name="title" required>
 
-      <div id="done">
-        <h3>Выполненные задания</h3>
-      </div>
-    </section>
+      <label for="body">Текст:</label>
+      <textarea id="body" name="body" required></textarea>
 
-    <button id="toggleThemeBtn" class="glow-on-hover" type="button">
-      СМЕНА ТЕМЫ!
-    </button>
+      <label for="user-select">Пользователь:</label>
+      <select id="user-select" required>
+      </select>
 
-    <script src="js.js"></script>
-  </body>
+      <button type="submit">Подтвердить</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>

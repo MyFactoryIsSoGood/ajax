@@ -1,2 +1,4 @@
-# AJAX_lab
-liveserver
+# AJAX
+
+**Сборка:**
+1) Открываем index.html
